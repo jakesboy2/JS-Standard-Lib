@@ -43,10 +43,10 @@ var _ = (function () {
     /**
      * Returns and object split by true and false values defined by a condition
      * @param array the array we are splitting up
-     * @param condition the condition we are checking
+     * @param condition [Optional] the condition we are checking, defaults true
      * @returns {'true': trueValues, 'false': falseValues} 
      */
-    public_methods.splitArrayBy = function (array, condition) {
+    public_methods.splitArrayBy = function (array, condition = true) {
         const trueArray = [];
         const falseArray = [];
         
@@ -64,7 +64,17 @@ var _ = (function () {
             true: trueArray,
             false: falseArray
         };
-    }   
+    };
+
+    /**
+     * Add commas to a string of numbers how a number should look in US format
+     * @param number the number we want to add commas to
+     * @param dollarize [Optional] if we want to prepend a dollarsign to the return string, defaults false
+     * @returns the string formatted correctly
+     */
+    public_methods.addCommasToNumber = function (number, dollarize = false) {
+        
+    };
 // ---------------
 
 
