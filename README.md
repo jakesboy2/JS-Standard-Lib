@@ -1,12 +1,12 @@
 # JS-Standard-Lib
-Personal 'standard library' for Javascript
-Created and maintained by Jacob Waldrip
-Started 6/2019
-Last Updated [6/2019]
+Personal 'standard library' for Javascript<br>
+Created and maintained by Jacob Waldrip<br>
+Started 6/2019<br>
+Last Updated [6/2019]<br>
 
-Documentation:
+Documentation:<br>
 
-<b>Array Utility:</b>
+<b>Array Utility:</b><br>
   splitArrayBy(array, condition) => returns an object of the form {'false': [false values], 'true': [true values]}
   
 <b>Math Utility:</b>
