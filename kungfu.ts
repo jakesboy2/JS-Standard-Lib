@@ -12,7 +12,7 @@ const Kungfu = (function () {
 
     // Math Helpers
 
-    private_methods.randomNumber = function (min: any, max: any) {
+    private_methods.randomNumber = function (min: number, max: number): number {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
     // ---------------
@@ -50,9 +50,9 @@ const Kungfu = (function () {
      * @param condition [Optional] the condition we are checking, defaults true
      * @returns {'true': trueValues, 'false': falseValues}
      */
-    public_methods.splitArrayBy = function (array: any, condition: any = true) {
-        const trueArray = [];
-        const falseArray = [];
+    public_methods.splitArrayBy = function (array: any[], condition: boolean = true): {'true': any[], 'false': any[]} {
+        const trueArray: any[] = [];
+        const falseArray: any[] = [];
 
         for (const key in array) {
             const item = array[key];
@@ -75,8 +75,8 @@ const Kungfu = (function () {
      * @param array the array we are removing values from
      * @returns the updated array
      */
-    public_methods.removeFalseyFromArray = function (array: any) {
-        const returnArray = [];
+    public_methods.removeFalseyFromArray = function (array: any[]): any[] {
+        const returnArray: any[] = [];
 
         for (const key in array) {
             const item = array[key];
@@ -95,11 +95,11 @@ const Kungfu = (function () {
      * @param defaultValue [Optional] the default value for each element in the array, defaults to 0
      * @returns 2D array of the specified size
      */
-    public_methods.init2DArray = function (width: any, height: any, defaultValue: any = 0) {
-        const mainArray = [];
+    public_methods.init2DArray = function (width: number, height: number, defaultValue: any = 0): any[][] {
+        const mainArray: any[] = [];
 
         for (let i = 0; i < width; ++i) {
-            const subArray = [];
+            const subArray: any[] = [];
             for (let j = 0; j < height; ++j) {
                 subArray.push(defaultValue);
             }
@@ -115,8 +115,8 @@ const Kungfu = (function () {
      * @param defaultValue [Optional] the default value, defaults to 0
      * @returns the array requested
      */
-    public_methods.initArray = function (size: any, defaultValue: any = 0) {
-        const returnArray = [];
+    public_methods.initArray = function (size: number, defaultValue: any = 0): any[] {
+        const returnArray: any[] = [];
         for (let i = 0; i < size; ++i) {
             returnArray.push(defaultValue);
         }
@@ -128,15 +128,15 @@ const Kungfu = (function () {
      * @param array the array we are searching through
      * @returns the last element of the array
      */
-    public_methods.getLastElementOfArray = (array: any) => array[array.length - 1];
+    public_methods.getLastElementOfArray = (array: any[]): any => array[array.length - 1];
 
     /**
      * returns a random element from the array
      * @param array the array we are using
      * @returns a random element from the array
      */
-    public_methods.sampleArray = function (array: any) {
-        const index = private_methods.randomNumber(0, array.length - 1);
+    public_methods.sampleArray = function (array: any[]): any {
+        const index: number = private_methods.randomNumber(0, array.length - 1);
         return array[index];
     };
 
@@ -148,9 +148,9 @@ const Kungfu = (function () {
      * @param allowDuplicates [Optional] allow duplicate values to be found, defaults to false
      * @returns an array of random elements from the array
      */
-    public_methods.sampleArraySize = function (array: any, size: any, allowDuplicates: any = false) {
-        const sampleArr: any = [];
-        const usedIndicies: any = [];
+    public_methods.sampleArraySize = function (array: any[], size: number, allowDuplicates: boolean = false): any[] {
+        const sampleArr: any[] = [];
+        const usedIndicies: any[] = [];
 
         if (!allowDuplicates && array.length < size) {
             return [];
@@ -163,7 +163,7 @@ const Kungfu = (function () {
 
             const index = private_methods.randomNumber(0, array.length - 1);
 
-            if (!allowDuplicates && usedIndicies.contains(index)) {
+            if (!allowDuplicates && usedIndicies.includes(index)) {
                 --i;
                 continue;
             }
@@ -180,9 +180,9 @@ const Kungfu = (function () {
      * @param array the array we are searching through
      * @returns the first defined value in the array
      */
-    public_methods.getFirstDefinedInArray = function (array: any) {
+    public_methods.getFirstDefinedInArray = function (array: any[]): any {
         for (const key in array) {
-            const item = array[key];
+            const item: any = array[key];
             if (item !== undefined) {
                 return item;
             }
@@ -205,11 +205,11 @@ const Kungfu = (function () {
      * @param delim [Optional] the deliemter seperating them, defaults to no space
      * @returns a string of elements joined
      */
-    public_methods.join = function (array: any, delim: any = "") {
-        let finalString = "";
+    public_methods.join = function (array: any[], delim: string = ""): string {
+        let finalString: string = "";
 
         for (const key in array) {
-            const item = array[key];
+            const item: any[] = array[key];
             finalString += (item + delim);
         }
 
@@ -224,7 +224,7 @@ const Kungfu = (function () {
      * @param end [Optional] the index you want to end the reversal at
      * @returns the array with the specified reversal
      */
-    public_methods.reverseArray = function (array: any, start: any = 0, end: any = 0) {
+    public_methods.reverseArray = function (array: any[], start: number = 0, end: number = 0): any[] {
         if (end === 0) {
             end = array.length - 1;
         }
@@ -235,8 +235,8 @@ const Kungfu = (function () {
             return array;
         }
 
-        const reversedArray = [];
-        let j = 0;
+        const reversedArray: any[] = [];
+        let j: number = 0;
 
         for (let i = 0; i < array.length; ++i) {
 
@@ -267,8 +267,8 @@ const Kungfu = (function () {
      * @param dollarize [Optional] if we want to prepend a dollarsign to the return string, defaults false
      * @returns the string formatted correctly
      */
-    public_methods.addCommasToNumber = function (numba: any, dollarize: any = false) {
-        const formattedString = numba.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    public_methods.addCommasToNumber = function (numba: number, dollarize: boolean = false): string {
+        const formattedString: string = numba.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         return dollarize ? "$" + formattedString : formattedString;
     };
     // ---------------
