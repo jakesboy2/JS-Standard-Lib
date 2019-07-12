@@ -255,6 +255,46 @@ var _ = (function () {
 
 // Math Utilities
 
+    /**
+     * check if two numbers are approx equal within the given margin
+     * @param num1
+     * @param num2
+     * @param margin [Optional] the margain you want to allow for, defaults to .001
+     * @returns bool if they're approx equal
+     */
+    public_methods.approxEqual = function (num1, num2, margain = .001){
+        return Math.abs(num1 - num2) < margain;
+    }
+
+    /**
+     * gets the average of all numbers in the array
+     * @param numbersArray
+     * @returns average of these numbers
+     */
+    public_methods.average = function (nums) {
+        let sum = 0;
+        for(const index in nums){
+            sum += nums[index];
+        }
+        return sum / nums.length;
+    }
+
+    /**
+     * checks if the number is even
+     * @param num
+     * @returns true if the number is even
+     */
+    public_methods.isEven = (num) => num % 2 === 0; 
+
+    /**
+     * check if the value is a number
+     * @param potentialNumber the string we're checking for
+     * @returns true if the value is a number
+     */
+    public_methods.isNumber = function(potentialNumber) {
+        potentialNumber = "" + potentialNumber; //coerce num to be a string
+        return !isNaN(potentialNumber) && !isNaN(parseFloat(potentialNumber));
+    }
 // ---------------
 
 
